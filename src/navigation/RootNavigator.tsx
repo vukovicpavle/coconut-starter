@@ -1,6 +1,6 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {useTheme} from '../hooks/useTheme';
+import useTheme from '../hooks/useTheme';
 import StackNavigatorFactory from '../views/components/StackNavigatorFactory';
 import AuthNavigator from './AuthNavigator';
 import IntroductionNavigator from './IntroductionNavigator';

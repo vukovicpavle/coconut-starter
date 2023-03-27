@@ -1,7 +1,7 @@
 import React from 'react';
 import {Platform, StatusBar as StatusBarNative} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {useTheme} from '../../hooks/useTheme';
+import useTheme from '../../hooks/useTheme';
 import Styled from './Styled';
 const colors = require('../../../colors');
 

@@ -6,7 +6,7 @@ import {
 } from '@react-navigation/native-stack';
 import React from 'react';
 import {Platform} from 'react-native';
-import {useTheme} from '../../hooks/useTheme';
+import useTheme from '../../hooks/useTheme';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,7 +30,7 @@ export default function StackNavigatorFactory({routes, options}: Props) {
       screenOptions={{
         headerTransparent: Platform.OS === 'ios',
         headerBlurEffect: Platform.OS === 'ios' ? colorScheme : undefined,
-        headerLargeTitle: true,
+        // headerLargeTitle: true,
         headerLargeStyle: {
           backgroundColor: colors.background,
         },

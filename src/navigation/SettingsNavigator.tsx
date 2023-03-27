@@ -9,6 +9,9 @@ export default function SettingsNavigator() {
         {
           name: 'Settings',
           component: Settings,
+          options: {
+            headerLargeTitle: true,
+          },
         },
       ]}
     />

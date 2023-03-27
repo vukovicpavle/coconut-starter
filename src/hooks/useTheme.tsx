@@ -92,6 +92,6 @@ export const ThemeProvider = ({children}: PropsWithChildren<{}>) => {
   );
 };
 
-export const useTheme = () => {
+export default function useTheme() {
   return useContext(ThemeContext);
-};
+}

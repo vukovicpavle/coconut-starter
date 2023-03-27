@@ -9,6 +9,9 @@ export default function ProjectsNavigator() {
         {
           name: 'Projects',
           component: Projects,
+          options: {
+            headerLargeTitle: true,
+          },
         },
       ]}
     />

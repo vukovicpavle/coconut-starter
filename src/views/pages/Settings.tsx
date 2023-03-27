@@ -1,5 +1,5 @@
 import React from 'react';
-import {useTheme} from '../../hooks/useTheme';
+import useTheme from '../../hooks/useTheme';
 import Button from '../components/Button';
 import Page from '../components/Page';
 import Text from '../components/Text';

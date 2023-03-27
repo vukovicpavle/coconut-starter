@@ -9,6 +9,9 @@ export default function NotificationsNavigator() {
         {
           name: 'Notifications',
           component: Notifications,
+          options: {
+            headerLargeTitle: true,
+          },
         },
       ]}
     />

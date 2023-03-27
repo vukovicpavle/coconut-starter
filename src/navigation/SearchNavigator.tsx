@@ -9,6 +9,9 @@ export default function SearchNavigator() {
         {
           name: 'Search',
           component: Search,
+          options: {
+            headerLargeTitle: true,
+          },
         },
       ]}
     />

@@ -9,6 +9,9 @@ export default function HomeNavigator() {
         {
           name: 'Home',
           component: Home,
+          options: {
+            headerLargeTitle: true,
+          },
         },
       ]}
     />
