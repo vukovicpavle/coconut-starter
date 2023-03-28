@@ -5,6 +5,7 @@ import {
 } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import {Platform} from 'react-native';
+import colors from '../../../colors';
 import TabBarBackground from './TabBarBackground';
 
 const Tab = createBottomTabNavigator();
@@ -25,6 +26,8 @@ export default function TabNavigatorFactory({routes, options}: Props) {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
+        tabBarActiveTintColor: colors.primary[500],
+        tabBarInactiveTintColor: colors.neutral[500],
         tabBarStyle:
           Platform.OS === 'ios'
             ? {

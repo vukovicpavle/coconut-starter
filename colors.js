@@ -1,10 +1,10 @@
 const nativeWindColors = require('tailwindcss/colors');
 
 const colors = {
-  primary: nativeWindColors.sky,
-  secondary: nativeWindColors.indigo,
-  gray: nativeWindColors.slate,
   ...nativeWindColors,
+  primary: nativeWindColors.blue,
+  secondary: nativeWindColors.fuchsia,
+  neutral: nativeWindColors.neutral,
 };
 
 module.exports = colors;

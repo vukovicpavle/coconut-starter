@@ -7,7 +7,7 @@ function Paragraph({
 }: PropsWithChildren<{textClassName?: string}>) {
   return (
     <Styled.Text
-      className={`text-gray-900 dark:text-gray-100 text-base ${textClassName}`}
+      className={`text-neutral-900 dark:text-neutral-100 text-base ${textClassName}`}
       {...props}
     />
   );
@@ -19,7 +19,7 @@ function Heading1({
 }: PropsWithChildren<{textClassName?: string}>) {
   return (
     <Styled.Text
-      className={`text-gray-900 dark:text-gray-100 text-2xl font-bold ${textClassName}`}
+      className={`text-neutral-900 dark:text-neutral-100 text-2xl font-bold ${textClassName}`}
       {...props}
     />
   );
@@ -31,7 +31,7 @@ function Heading2({
 }: PropsWithChildren<{textClassName?: string}>) {
   return (
     <Styled.Text
-      className={`text-gray-900 dark:text-gray-100 text-xl font-bold ${textClassName}`}
+      className={`text-neutral-900 dark:text-neutral-100 text-xl font-bold ${textClassName}`}
       {...props}
     />
   );
@@ -43,7 +43,7 @@ function Heading3({
 }: PropsWithChildren<{textClassName?: string}>) {
   return (
     <Styled.Text
-      className={`text-gray-900 dark:text-gray-100 text-lg font-bold ${textClassName}`}
+      className={`text-neutral-900 dark:text-neutral-100 text-lg font-bold ${textClassName}`}
       {...props}
     />
   );
@@ -55,7 +55,7 @@ function Heading4({
 }: PropsWithChildren<{textClassName?: string}>) {
   return (
     <Styled.Text
-      className={`text-gray-900 dark:text-gray-100 text-base font-bold ${textClassName}`}
+      className={`text-neutral-900 dark:text-neutral-100 text-base font-bold ${textClassName}`}
       {...props}
     />
   );
@@ -67,7 +67,7 @@ function Heading5({
 }: PropsWithChildren<{textClassName?: string}>) {
   return (
     <Styled.Text
-      className={`text-gray-900 dark:text-gray-100 text-sm font-bold ${textClassName}`}
+      className={`text-neutral-900 dark:text-neutral-100 text-sm font-bold ${textClassName}`}
       {...props}
     />
   );
@@ -79,7 +79,7 @@ function Heading6({
 }: PropsWithChildren<{textClassName?: string}>) {
   return (
     <Styled.Text
-      className={`text-gray-900 dark:text-gray-100 text-xs font-bold ${textClassName}`}
+      className={`text-neutral-900 dark:text-neutral-100 text-xs font-bold ${textClassName}`}
       {...props}
     />
   );
@@ -91,7 +91,7 @@ function Overline({
 }: PropsWithChildren<{textClassName?: string}>) {
   return (
     <Styled.Text
-      className={`text-gray-900 dark:text-gray-100 text-xs uppercase ${textClassName}`}
+      className={`text-neutral-900 dark:text-neutral-100 text-xs uppercase ${textClassName}`}
       {...props}
     />
   );
@@ -103,7 +103,7 @@ function Caption({
 }: PropsWithChildren<{textClassName?: string}>) {
   return (
     <Styled.Text
-      className={`text-gray-900 dark:text-gray-100 text-xs ${textClassName}`}
+      className={`text-neutral-900 dark:text-neutral-100 text-xs ${textClassName}`}
       {...props}
     />
   );
