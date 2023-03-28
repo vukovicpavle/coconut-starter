@@ -1,4 +1,5 @@
 import React from 'react';
+import {LogBox} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {ThemeProvider} from './src/hooks/useTheme';
 import RootNavigator from './src/navigation/RootNavigator';
@@ -18,6 +19,8 @@ function withContext(Component: React.FC) {
 }
 
 function App() {
+  LogBox.ignoreAllLogs();
+
   return (
     <>
       <StatusBar />

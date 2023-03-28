@@ -3,8 +3,8 @@ import Styled from './Styled';
 import Text from './Text';
 
 type ButtonProps = {
-  title: string;
-  onPress: () => void;
+  title?: string;
+  onPress?: () => void;
   containerClassName?: string;
   titleClassName?: string;
 };
@@ -18,7 +18,7 @@ function Base({
   return (
     <Styled.TouchableOpacity
       onPress={onPress}
-      className={`rounded-full py-2 px-4 ${containerClassName}`}>
+      className={`rounded-full h-12 items-center justify-center ${containerClassName}`}>
       <Text.Paragraph textClassName={`text-center font-bold ${titleClassName}`}>
         {title}
       </Text.Paragraph>
