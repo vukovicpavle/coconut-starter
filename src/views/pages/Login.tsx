@@ -12,7 +12,7 @@ export default function Login() {
   }
 
   return (
-    <Page.Infinite>
+    <Page.Finite>
       <Form
         fields={[
           {
@@ -20,6 +20,9 @@ export default function Login() {
             name: 'email',
             label: 'Email',
             placeholder: 'Enter your email',
+            required: true,
+            error: (_values: any, errors: any, touched: any) =>
+              errors.email && touched.email ? errors.email : undefined,
           },
           {
             control: 'password',
@@ -28,6 +31,9 @@ export default function Login() {
             helpText:
               'Your password must be a minimum of 8 characters long and include at least one uppercase letter, one lowercase letter, and one number.',
             placeholder: 'Enter your password',
+            required: true,
+            error: (_values: any, errors: any, touched: any) =>
+              errors.password && touched.password ? errors.password : undefined,
           },
           {
             control: 'button',
@@ -70,6 +76,6 @@ export default function Login() {
         }}
         onSubmit={handleSubmit}
       />
-    </Page.Infinite>
+    </Page.Finite>
   );
 }
