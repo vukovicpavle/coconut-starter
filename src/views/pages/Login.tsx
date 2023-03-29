@@ -1,35 +1,10 @@
 import React from 'react';
 import useNavigator from '../../hooks/useNavigator';
-import Button from '../components/Button';
 import Form from '../components/Form';
 import Page from '../components/Page';
 
-function ForgotPasswordLink() {
-  const {navigate} = useNavigator();
-
-  return (
-    <Button.Link
-      containerClassName="mb-4 self-end"
-      title="Forgot password?"
-      onPress={() => navigate('ForgotPassword')}
-    />
-  );
-}
-
-function RegisterLink() {
-  const {navigate} = useNavigator();
-
-  return (
-    <Button.Secondary
-      containerClassName="mb-4"
-      title="Register"
-      onPress={() => navigate('Register')}
-    />
-  );
-}
-
 export default function Login() {
-  const {reset} = useNavigator();
+  const {reset, navigate} = useNavigator();
 
   function handleSubmit(values: any) {
     console.log(values);
@@ -55,19 +30,38 @@ export default function Login() {
             placeholder: 'Enter your password',
           },
           {
-            control: 'custom',
+            control: 'button',
             name: 'forgotPasswordLink',
-            component: ForgotPasswordLink,
+            label: 'Forgot password?',
+            containerClassName: 'self-end',
+            custom: {
+              type: 'link',
+              onPress: () => {
+                navigate('ForgotPassword');
+              },
+            },
           },
           {
-            control: 'submit',
+            control: 'button',
             name: 'submit',
             label: 'Login',
+            custom: {
+              type: 'primary',
+              onPress: (values: any) => {
+                handleSubmit(values);
+              },
+            },
           },
           {
-            control: 'custom',
+            control: 'button',
             name: 'registerLink',
-            component: RegisterLink,
+            label: 'Register',
+            custom: {
+              type: 'secondary',
+              onPress: () => {
+                navigate('Register');
+              },
+            },
           },
         ]}
         initialValues={{
@@ -76,17 +70,6 @@ export default function Login() {
         }}
         onSubmit={handleSubmit}
       />
-      {/* <Button.Primary title="Register" onPress={() => navigate('Register')} />
-      <Button.Primary
-        containerClassName="mt-2"
-        title="Forgot password"
-        onPress={() => navigate('ForgotPassword')}
-      />
-      <Button.Primary
-        containerClassName="mt-2"
-        title="Login"
-        onPress={() => reset('MainNavigator')}
-      /> */}
     </Page.Infinite>
   );
 }

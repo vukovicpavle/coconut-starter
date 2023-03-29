@@ -1,8 +1,8 @@
-import React, {createElement, useState} from 'react';
+import React, {useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from '../../../colors';
 import useTheme from '../../hooks/useTheme';
-import Button from './Button';
+import DefaultButton from './Button';
 import {ControlProps, Controls} from './FormFactory';
 import Styled from './Styled';
 
@@ -135,34 +135,36 @@ function Email(props: ControlProps) {
   );
 }
 
-function Submit(props: ControlProps) {
-  function handleSubmit() {
-    props.onSubmit(props.values);
-  }
+function Button(props: ControlProps) {
+  // Get the button type
+  const type = props.custom?.type;
 
-  return (
-    <Button.Primary
-      containerClassName="mb-4"
-      title={props.label as string}
-      onPress={handleSubmit}
-    />
-  );
-}
+  // Button props
+  const buttonProps = {
+    title: props.label as string,
+    containerClassName: `mb-4 ${props.containerClassName}`,
+    onPress: () => {
+      props.custom?.onPress(props.values);
+    },
+  };
 
-function Custom(props: ControlProps) {
-  if (!props.component) {
-    return null;
+  switch (type) {
+    case 'primary':
+      return <DefaultButton.Primary {...buttonProps} />;
+    case 'secondary':
+      return <DefaultButton.Secondary {...buttonProps} />;
+    case 'link':
+      return <DefaultButton.Link {...buttonProps} />;
+    default:
+      return <DefaultButton.Primary {...buttonProps} />;
   }
-  // Render component from props.custom.component and pass it props
-  return createElement(props.component, props);
 }
 
 const controls: Controls = {
   text: Text,
   password: Password,
   email: Email,
-  submit: Submit,
-  custom: Custom,
+  button: Button,
 };
 
 export default controls;

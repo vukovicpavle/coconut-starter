@@ -4,7 +4,7 @@ import Styled from './Styled';
 
 export interface FieldConfig {
   // name of the control to use from the controls object
-  control: string;
+  control?: string;
   // name of the field in the form
   name: string;
   // label to display for the field
@@ -114,11 +114,13 @@ export class FormFactory {
 
   // render field
   private renderField = (field: FieldConfig & FormikProps<any>) => {
-    const {control, ...fieldProps} = field;
-    const Control = this.controls[control];
+    const {control = 'custom', ...fieldProps} = field;
+    const Control = this.controls[control] || field.component;
 
     if (!Control) {
-      throw new Error(`Control ${control} not found`);
+      throw new Error(
+        `You must provide valid control name or component for ${field.name}`,
+      );
     }
 
     const {name, required, disabled, readonly} = fieldProps;
@@ -170,32 +172,23 @@ export class FormFactory {
         ? fieldProps.custom(values, errors, touched)
         : fieldProps.custom;
 
-    if (fieldProps.component) {
-      return (
-        <fieldProps.component
-          key={name}
-          {...fieldProps}
-          value={values[name]}
-          onBlur={field.handleBlur}
-          onChange={field.handleChange}
-          onSubmit={field.handleSubmit}
-          onReset={field.handleReset}
-        />
-      );
+    // props to pass to the control
+    const controlProps = {
+      ...fieldProps,
+      key: name,
+      value: values[name],
+      onBlur: field.handleBlur,
+      onChange: field.handleChange,
+      onSubmit: field.handleSubmit,
+      onReset: field.handleReset,
+    };
+
+    if (fieldProps.component && control === 'custom') {
+      return <fieldProps.component {...controlProps} />;
     }
 
     // render the control
-    return (
-      <Control
-        key={name}
-        {...fieldProps}
-        value={values[name]}
-        onBlur={field.handleBlur}
-        onChange={field.handleChange}
-        onSubmit={field.handleSubmit}
-        onReset={field.handleReset}
-      />
-    );
+    return <Control {...controlProps} />;
   };
 
   // create a form

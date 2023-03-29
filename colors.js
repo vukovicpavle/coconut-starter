@@ -3,7 +3,7 @@ const nativeWindColors = require('tailwindcss/colors');
 const colors = {
   ...nativeWindColors,
   primary: nativeWindColors.blue,
-  secondary: nativeWindColors.fuchsia,
+  secondary: nativeWindColors.slate,
   neutral: nativeWindColors.neutral,
 };
 
