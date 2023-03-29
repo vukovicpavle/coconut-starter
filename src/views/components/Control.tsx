@@ -5,6 +5,7 @@ import useTheme from '../../hooks/useTheme';
 import DefaultButton from './Button';
 import {ControlProps, Controls} from './FormFactory';
 import Styled from './Styled';
+import DefaultText from './Text';
 
 function Base(props: ControlProps) {
   const {
@@ -39,13 +40,17 @@ function Base(props: ControlProps) {
             {label}
           </Styled.Text>
           {required && (
-            <Styled.Text className="text-red-700 dark:text-red-300 text-base font-bold">
+            <Styled.Text className="text-neutral-900 dark:text-neutral-100 text-base font-bold">
               {' *'}
             </Styled.Text>
           )}
         </Styled.View>
       )}
-      <Styled.View className="flex flex-row h-12 rounded-full bg-neutral-200 dark:bg-neutral-800 items-center">
+      <Styled.View
+        className={`flex flex-row h-12 rounded-full bg-neutral-200 dark:bg-neutral-800 items-center border
+          ${disabled ? 'opacity-50' : 'opacity-100'}
+          ${error ? 'border-red-500' : 'border-transparent'}
+        `}>
         {custom?.prefix && (
           <Styled.View className="flex flex-row items-center h-full px-4">
             {custom?.prefix}
@@ -160,11 +165,69 @@ function Button(props: ControlProps) {
   }
 }
 
+function LabeledButton(props: ControlProps) {
+  // Get the button type
+  const type = props.custom?.type;
+
+  // Button props
+  const buttonProps = {
+    title: props.label as string,
+    containerClassName: props.custom?.buttonClassName,
+    onPress: () => {
+      props.custom?.onPress(props.values);
+    },
+  };
+
+  switch (type) {
+    case 'primary':
+      return (
+        <Styled.View
+          className={`flex flex-row items-center justify-center mb-4 ${props.containerClassName}`}>
+          <DefaultText.Paragraph textClassName="mr-2">
+            {props.custom?.label}
+          </DefaultText.Paragraph>
+          <DefaultButton.Primary {...buttonProps} />
+        </Styled.View>
+      );
+    case 'secondary':
+      return (
+        <Styled.View
+          className={`flex flex-row items-center justify-center mb-4 ${props.containerClassName}`}>
+          <DefaultText.Paragraph textClassName="mr-2">
+            {props.custom?.label}
+          </DefaultText.Paragraph>
+          <DefaultButton.Secondary {...buttonProps} />
+        </Styled.View>
+      );
+    case 'link':
+      return (
+        <Styled.View
+          className={`flex flex-row items-center justify-center mb-4 ${props.containerClassName}`}>
+          <DefaultText.Paragraph textClassName="mr-2">
+            {props.custom?.label}
+          </DefaultText.Paragraph>
+          <DefaultButton.Link {...buttonProps} />
+        </Styled.View>
+      );
+    default:
+      return (
+        <Styled.View
+          className={`flex flex-row items-center justify-center mb-4 ${props.containerClassName}`}>
+          <DefaultText.Paragraph textClassName="mr-2">
+            {props.custom?.label}
+          </DefaultText.Paragraph>
+          <DefaultButton.Primary {...buttonProps} />
+        </Styled.View>
+      );
+  }
+}
+
 const controls: Controls = {
   text: Text,
   password: Password,
   email: Email,
   button: Button,
+  labeledButton: LabeledButton,
 };
 
 export default controls;

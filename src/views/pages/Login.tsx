@@ -36,11 +36,12 @@ export default function Login() {
               errors.password && touched.password ? errors.password : undefined,
           },
           {
-            control: 'button',
+            control: 'labeledButton',
             name: 'forgotPasswordLink',
-            label: 'Forgot password?',
+            label: 'Click here',
             containerClassName: 'self-end',
             custom: {
+              label: 'Forgot password?',
               type: 'link',
               onPress: () => {
                 navigate('ForgotPassword');
