@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Storage = {
+const StorageService = {
   async set(key: string, value: any) {
     if (!key || !value) {
       return;
@@ -42,4 +42,4 @@ const Storage = {
   },
 };
 
-export default Storage;
+export default StorageService;

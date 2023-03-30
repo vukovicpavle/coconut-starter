@@ -1,4 +1,4 @@
-export interface User {
+export interface UserModel {
   // Basic user information
   id?: number;
   name?: string;

@@ -25,12 +25,12 @@ export default function RootNavigator() {
             component: IntroductionNavigator,
           },
           {
-            name: 'OnboardingNavigator',
-            component: OnboardingNavigator,
-          },
-          {
             name: 'AuthNavigator',
             component: AuthNavigator,
+          },
+          {
+            name: 'OnboardingNavigator',
+            component: OnboardingNavigator,
           },
           {
             name: 'MainNavigator',

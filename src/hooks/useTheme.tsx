@@ -10,7 +10,7 @@ import React, {
   useContext,
   useEffect,
 } from 'react';
-import Storage from '../services/Storage';
+import Storage from '../services/StorageService';
 const colors = require('../../colors');
 
 const lightTheme: Theme = {
@@ -55,7 +55,8 @@ export const ThemeProvider = ({children}: PropsWithChildren<{}>) => {
   const {colorScheme, toggleColorScheme, setColorScheme} = useColorScheme();
 
   useEffect(() => {
-    async function getInitialColorScheme() {
+    // Get stored color scheme and initialize it
+    (async function () {
       const storedColorScheme = await Storage.get<ColorSchemeName>(
         'colorScheme',
       );
@@ -65,18 +66,16 @@ export const ThemeProvider = ({children}: PropsWithChildren<{}>) => {
       } else {
         setColorScheme(colorScheme);
       }
-    }
+    })();
 
-    getInitialColorScheme();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    async function storeColorScheme() {
+    // Store color scheme
+    (async function () {
       await Storage.set('colorScheme', colorScheme);
-    }
-
-    storeColorScheme();
+    })();
   }, [colorScheme]);
 
   return (

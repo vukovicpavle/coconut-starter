@@ -30,7 +30,6 @@ export default function StackNavigatorFactory({routes, options}: Props) {
       screenOptions={{
         headerTransparent: Platform.OS === 'ios',
         headerBlurEffect: Platform.OS === 'ios' ? colorScheme : undefined,
-        // headerLargeTitle: true,
         headerLargeStyle: {
           backgroundColor: colors.background,
         },
